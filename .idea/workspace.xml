@@ -7,8 +7,6 @@
     <list default="true" id="7a512cc4-c415-422e-b11d-b110b5de67da" name="Changes" comment="Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/br/com/codefylab/gemps/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/codefylab/gemps/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/br/com/codefylab/gemps/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/codefylab/gemps/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/br/com/codefylab/gemps/style/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/codefylab/gemps/style/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/br/com/codefylab/gemps/teste/localizacao.js" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/codefylab/gemps/teste/localizacao.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,7 +76,9 @@
       <workItem from="1740435092781" duration="5644000" />
       <workItem from="1740606172123" duration="4996000" />
       <workItem from="1741040831628" duration="9048000" />
-      <workItem from="1741110423240" duration="7901000" />
+      <workItem from="1741110423240" duration="10763000" />
+      <workItem from="1741185903820" duration="3129000" />
+      <workItem from="1741216875204" duration="5565000" />
     </task>
     <task id="LOCAL-00001" summary="Criação GemPS">
       <option name="closed" value="true" />
@@ -120,7 +120,15 @@
       <option name="project" value="LOCAL" />
       <updated>1741050331102</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1741118728791</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1741118728791</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
