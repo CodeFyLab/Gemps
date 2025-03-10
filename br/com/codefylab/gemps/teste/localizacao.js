@@ -1,123 +1,123 @@
-var map;
+document.addEventListener('DOMContentLoaded', function () {
+    let map;
 
-// Coordenadas da faculdade
-var faculdadeCoords = [-14.864416, -40.834072];
+    // Coordenadas da faculdade
+    const faculdadeCoords = [-14.864416, -40.834072];
 
-var salas = [
-    { nome: "Sala 101", coords: [-14.863809, -40.833317] },
-    { nome: "Sala 102", coords: [-14.863950, -40.833550] },
-    { nome: "Laboratório 1", coords: [-14.864213, -40.833512] },
-];
-
-// Inicializa o mapa apenas uma vez (se ainda não foi criado)
-if (!map) {
-    map = L.map('mapid', {
-        center: faculdadeCoords, // Fixa o mapa nas coordenadas da faculdade
-        zoom: 18, // Nível de zoom
-        dragging: true, // Permite arrastar a tela
-        zoomControl: true, // Mostra o controle de zoom
-        scrollWheelZoom: true, // Permite o zoom com a roda do mouse
-        doubleClickZoom: true, // Permite o zoom com duplo clique
-        touchZoom: true, // Desativa o zoom com toque (dispositivos móveis)
-        });
-
-        // Adiciona a camada de tiles (mapa base)
-
-    const key = 'xfjEnIcQ0ERJBgeBHhBc'; //starting position
-    const mtLayer = L.maptiler.maptilerLayer({
-        apiKey: key,
-        style: L.maptiler.MapStyle.STREETS, // optional
-    }).addTo(map);
-
-    // Adiciona um marcador na localização da faculdade
-    L.marker(faculdadeCoords).addTo(map)
-    .bindPopup('Localização da Faculdade')
-    .openPopup();
-
-    salas.forEach(function (sala) {
-        L.marker(sala.coords)
-            .addTo(map)
-            .bindPopup(sala.nome);
-    });
-
-    var waypoints = [
-        [-14.863809, -40.833317], // Sala 101
-        [-14.864019, -40.833274], // Ponto intermediário
-        [-14.864213, -40.833512]  // Laboratório 1
+    let salas = [
+        { nome: "Sala 101", coords: [-14.863980, -40.833626] },
+        { nome: "Sala 102", coords: [-14.864077, -40.833570] },
+        { nome: "Laboratório 1", coords: [-14.864213, -40.833512] },
     ];
 
-    // Desenha a rota manualmente usando L.polyline
-    L.polyline(waypoints, {
-        color: '#fcad0b', // Cor da linha
-        weight: 5, // Espessura da linha
-        opacity: 0.8, // Opacidade da linha
-        lineJoin: 'round' // Estilo das junções
-    }).addTo(map);
-
-
-    /* Testando colocar formas geométricas personalizadas no mapa
-
-    var modulo1 = L.polygon([
-        [-14.863827, -40.833398], // Coordenada 1
-        [-14.863687, -40.833092], // Coordenada 2
-        [-14.864080, -40.832895], // Coordenada 3
-        [-14.864231, -40.833151],  // Coordenada 4
-    ],{
-        color: "#fcad0b", // Cor da borda (vermelho)
-        fillColor: "rgba(247,255,0,0.58)", // Cor de preenchimento (amarelo)
-        fillOpacity: 0.5, // Opacidade do preenchimento (50%)
-        weight: 3, // Espessura da borda
-        opacity: 0.5, // Opacidade da borda (80%)
-        lineJoin: "round", // Estilo das junções das bordas
-        dashArray: "0.2", // Borda
-    }).addTo(map);
-
-    modulo1.properties = {
-        nome: "Módulo 1",
-    };
-    modulo1.bindPopup(`${modulo1.properties.nome}`);
-
-    var modulo2 = L.polygon([
-        [-14.863998, -40.833714], // Coordenada 1
-        [-14.864179, -40.834079], // Coordenada 2
-        [-14.864599, -40.833832], // Coordenada 3
-        [-14.864391, -40.833499],  // Coordenada 4
-    ],{
-        color: "#fcad0b", // Cor da borda (vermelho)
-        fillColor: "rgba(247,255,0,0.58)", // Cor de preenchimento (amarelo)
-        fillOpacity: 0.5, // Opacidade do preenchimento (50%)
-        weight: 3, // Espessura da borda
-        opacity: 0.5, // Opacidade da borda (80%)
-        lineJoin: "round", // Estilo das junções das bordas
-        dashArray: "1", //Borda
-    }).addTo(map);
-
-    modulo2.properties = {
-        nome: "Módulo 2",
-    };
-    modulo2.bindPopup(`${modulo2.properties.nome}`);*/
-
-    // Adiciona um evento de clique no mapa para exibir coordenadas
-    map.on('click', function(e) {
-    var coords = e.latlng; // Captura as coordenadas do ponto clicado
-
-    L.popup()
-        .setLatLng(coords) // Define a posição do popup
-        .setContent(`Coordenadas: ${coords.lat.toFixed(6)}, ${coords.lng.toFixed(6)}`) // Exibe as coordenadas
-        .openOn(map); // Abre o popup no mapa
+    let salaIcon = L.icon({
+        iconUrl: 'img/aula.png',
+        iconSize: [32, 32],
+        iconAnchor: [16, 32],
+        popupAnchor: [0, -32],
+        opacity: 0.2
     });
-}
 
-function success(pos) {
-    L.marker([pos.coords.latitude, pos.coords.longitude]).addTo(map)
-}
+    // Armazena os marcadores em um objeto
+    let marcadores = {};
 
-function error(err) {
-    console.log(`Erro ao obter localização: ${err.message}`);
-}
+    // Inicializa o mapa
+    if (!map) {
+        map = L.map('mapid', {
+            center: faculdadeCoords, // Inicializa o mapa nas coordenadas da faculdade
+            zoom: 18,
+            maxZoom: 22,
+            minZoom: 18,
+            dragging: true,
+            zoomControl: true,
+            scrollWheelZoom: true,
+            doubleClickZoom: true,
+            touchZoom: true,
+        });
 
-// Configura a geolocalização
-var watchID = navigator.geolocation.watchPosition(success, error, {
-    enableHighAccuracy: true,
-    timeout: 5000
+        // Adiciona a camada de tiles do MapTiler
+        const key = 'xfjEnIcQ0ERJBgeBHhBc';
+        const mtLayer = L.maptiler.maptilerLayer({
+            apiKey: key,
+            style: L.maptiler.MapStyle.STREETS,
+        }).addTo(map);
+
+        // Adiciona um marcador na localização da faculdade
+        L.marker(faculdadeCoords).addTo(map)
+            .bindPopup('Localização da Faculdade')
+            .openPopup();
+
+        // Adiciona marcadores para as salas
+        salas.forEach(function (sala) {
+            marcadores[sala.nome] = L.marker(sala.coords, { icon: salaIcon })
+                .addTo(map)
+                .bindPopup(sala.nome);
+        });
+
+        // Desenha a rota manualmente usando L.polyline
+        var waypoints = [
+            [-14.863980, -40.833626], // Sala 101
+            [-14.864077, -40.833570], // Sala 102
+            [-14.864213, -40.833512]  // Laboratório 1
+        ];
+        L.polyline(waypoints, {
+            color: '#00b4ff',
+            weight: 5,
+            opacity: 1.0,
+            lineJoin: 'round'
+        }).addTo(map);
+
+        // Adiciona um evento de clique no mapa para exibir coordenadas
+        map.on('click', function (e) {
+            var coords = e.latlng; // Captura as coordenadas do ponto clicado
+            L.popup()
+                .setLatLng(coords)
+                .setContent(`Coordenadas: ${coords.lat.toFixed(6)}, ${coords.lng.toFixed(6)}`)
+                .openOn(map);
+        });
+    }
+
+    // Função para buscar salas
+    function buscarSala() {
+        const searchInput = document.getElementById('searchInput'); // Campo de busca
+        const query = searchInput.value.trim().toLowerCase(); // Texto digitado pelo usuário
+
+        // Filtra as salas que correspondem à busca
+        const salaEncontrada = salas.find(sala => sala.nome.toLowerCase().includes(query));
+
+        if (salaEncontrada) {
+            // Centraliza o mapa na sala encontrada
+            map.setView(salaEncontrada.coords, 18);
+
+            // Abre o popup do marcador existente
+            marcadores[salaEncontrada.nome].openPopup();
+        } else {
+            alert('Sala não encontrada!'); // Exibe um alerta se a sala não for encontrada
+        }
+    }
+
+    // Adiciona um evento de input ao campo de busca
+    document.getElementById('searchInput').addEventListener('input', buscarSala);
+
+    // Função de sucesso para geolocalização
+    function success(pos) {
+        // Adiciona um marcador para a localização do usuário
+        L.marker([pos.coords.latitude, pos.coords.longitude]).addTo(map)
+            .bindPopup('Você está aqui!')
+
+        // Opcional: Centraliza o mapa na localização do usuário (comente se não quiser)
+        // map.setView([pos.coords.latitude, pos.coords.longitude], 18);
+    }
+
+    function error(err) {
+        console.log(`Erro ao obter localização: ${err.message}`);
+    }
+
+    // Configura a geolocalização
+    if (navigator.geolocation) {
+        let watchID = navigator.geolocation.watchPosition(success, error, {
+            enableHighAccuracy: true,
+            timeout: 5000
+        });
+    }
 });

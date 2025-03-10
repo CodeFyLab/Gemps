@@ -1,0 +1,11 @@
+{
+"type": "FeatureCollection",
+"name": "GemPS",
+"features": [
+{ "type": "Feature", "properties": { "Name": "Sala de Aula 01" }, "geometry": { "type": "Point", "coordinates": [ -40.8335968, -14.8640044 ] } },
+{ "type": "Feature", "properties": { "Name": "Metodologia ativa 02" }, "geometry": { "type": "Point", "coordinates": [ -40.8335536, -14.8640948 ] } },
+{ "type": "Feature", "properties": { "Name": "Metodologia Ativa 01" }, "geometry": { "type": "Point", "coordinates": [ -40.8335192, -14.8641747 ] } },
+{ "type": "Feature", "properties": { "Name": "Laboratório de informática" }, "geometry": { "type": "Point", "coordinates": [ -40.8334967, -14.8642311 ] } },
+{ "type": "Feature", "properties": { "Name": null }, "geometry": { "type": "LineString", "coordinates": [ [ -40.8334986, -14.864221 ], [ -40.8335222, -14.8641662 ], [ -40.833554, -14.8640923 ], [ -40.8335949, -14.8639998 ] ] } }
+]
+}
