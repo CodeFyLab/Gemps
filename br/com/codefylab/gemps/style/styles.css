@@ -1,0 +1,20 @@
+/* CSS do mapa */
+#mapid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+/* borda superior */
+#borda-superior {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 13%; /* Define a altura como uma porcentagem da altura da tela */
+    background-color: #fcad0b;
+    z-index: 1000;
+}

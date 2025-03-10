@@ -1,31 +1,35 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GemPS</title>
-    <link rel="stylesheet" href="style.css">
+
+    <!-- CSS da biblioteca Leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-          integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-          crossorigin=""/>
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+
+    <!-- Biblioteca Leaflet -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-            integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-            crossorigin=""></script>
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""></script>
+
+    <!-- Link para o CSS (Estilo Personalizado) -->
+     <link rel="stylesheet" href="br/com/codefylab/gemps/style/styles.css">
 </head>
 <body>
-    <header>
-        <h1>GemPS</h1>
-    </header>
+<!-- Barra Superior -->
+<header>
+    <div id="borda-superior"></div>
+</header>
+    <div id="mapid"></div>
+    
 
-    <main>
-        <div id = "map"></div>
-    </main>
+    <!-- Link para o JS -->
+    <script src="C:\Users\guilh\OneDrive\Documentos\GitHub\Gemps\br\com\codefylab\gemps\js\main.js"></script>
 
-    <footer></footer>
-
-    <script src="br/com/codefylab/gemps/js/main.js"></script>
+    <!-- Link para o script do mapa -->
+     <script src="br/com/codefylab/gemps/teste/mapa.js"></script>
 </body>
 </html>
-
-
-
