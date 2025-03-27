@@ -47,25 +47,13 @@ document.addEventListener('DOMContentLoaded', function () {
             .bindPopup('Localização da Faculdade')
             .openPopup();
 
-        // Adiciona marcadores para as salas
+        /*Adiciona marcadores para as salas
         salas.forEach(function (sala) {
             marcadores[sala.nome] = L.marker(sala.coords, { icon: salaIcon })
                 .addTo(map)
                 .bindPopup(sala.nome);
-        });
-
-        // Desenha a rota manualmente usando L.polyline
-        var waypoints = [
-            [-14.863980, -40.833626], // Sala 101
-            [-14.864077, -40.833570], // Sala 102
-            [-14.864213, -40.833512]  // Laboratório 1
-        ];
-        L.polyline(waypoints, {
-            color: '#00b4ff',
-            weight: 5,
-            opacity: 1.0,
-            lineJoin: 'round'
-        }).addTo(map);
+        })
+        */
 
         // Adiciona um evento de clique no mapa para exibir coordenadas
         map.on('click', function (e) {
@@ -95,6 +83,27 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Sala não encontrada!'); // Exibe um alerta se a sala não for encontrada
         }
     }
+    fetch('https://raw.githubusercontent.com/CodeFyLab/Gemps/refs/heads/master/br/com/codefylab/gemps/teste/GemPS.geojson')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao carregar o GeoJSON");
+            }
+            return response.json();
+        })
+        .then(data => {
+            L.geoJSON(data, {
+                style: function (feature) {
+
+                    return { color: "#ff7800", weight: 2 };
+                },
+                onEachFeature: function (feature, layer) {
+                    if (feature.properties && feature.properties.nome) {
+                        layer.bindPopup("<strong>Nome:</strong> " + feature.properties.nome);
+                    }
+                }
+            }).addTo(map);
+        })
+        .catch(error => console.error('Erro ao carregar o GeoJSON:', error));
 
     // Adiciona um evento de input ao campo de busca
     document.getElementById('searchInput').addEventListener('input', buscarSala);
