@@ -4,20 +4,6 @@ document.addEventListener('DOMContentLoaded', function () {
     // Coordenadas da faculdade
     const faculdadeCoords = [-14.864416, -40.834072];
 
-    let salas = [
-        { nome: "Sala 101", coords: [-14.863980, -40.833626] },
-        { nome: "Sala 102", coords: [-14.864077, -40.833570] },
-        { nome: "Laboratório 1", coords: [-14.864213, -40.833512] },
-    ];
-
-    let salaIcon = L.icon({
-        iconUrl: 'img/aula.png',
-        iconSize: [32, 32],
-        iconAnchor: [16, 32],
-        popupAnchor: [0, -32],
-        opacity: 0.2
-    });
-
     // Armazena os marcadores em um objeto
     let marcadores = {};
 
@@ -116,7 +102,7 @@ document.addEventListener('DOMContentLoaded', function () {
             }).addTo(map);
         })
         .catch(error => console.error('Erro ao carregar o GeoJSON:', error));
-    fetch() // Substitua pelo caminho do seu arquivo de rotas
+    fetch('https://raw.githubusercontent.com/CodeFyLab/Gemps/refs/heads/master/br/com/codefylab/gemps/teste/Rota.geojson') // Substitua pelo caminho do seu arquivo de rotas
         .then(response => response.json())
         .then(dataRotas => {
             L.geoJSON(dataRotas, {

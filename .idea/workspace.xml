@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a512cc4-c415-422e-b11d-b110b5de67da" name="Changes" comment="Commit">
-      <change afterPath="$PROJECT_DIR$/br/com/codefylab/gemps/img/Vector.svg" afterDir="false" />
+    <list default="true" id="7a512cc4-c415-422e-b11d-b110b5de67da" name="Changes" comment="Rotas Test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/br/com/codefylab/gemps/teste/Rota.geojson" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/codefylab/gemps/teste/Rota.geojson" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/br/com/codefylab/gemps/teste/localizacao.js" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/codefylab/gemps/teste/localizacao.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +114,7 @@
       <workItem from="1743090611432" duration="78000" />
       <workItem from="1743118015809" duration="1651000" />
       <workItem from="1743433307781" duration="2109000" />
-      <workItem from="1743904984287" duration="4606000" />
+      <workItem from="1743904984287" duration="6931000" />
     </task>
     <task id="LOCAL-00001" summary="Criação GemPS">
       <option name="closed" value="true" />
@@ -204,7 +204,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743905249761</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Rotas Test">
+      <option name="closed" value="true" />
+      <created>1743910713990</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1743910713990</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -243,6 +251,7 @@
     <MESSAGE value="Testando rotas personalizadas" />
     <MESSAGE value="Customização da tela inicial - Mapa" />
     <MESSAGE value="Commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit" />
+    <MESSAGE value="Rotas Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Rotas Test" />
   </component>
 </project>
