@@ -4,10 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7a512cc4-c415-422e-b11d-b110b5de67da" name="Changes" comment="">
+    <list default="true" id="7a512cc4-c415-422e-b11d-b110b5de67da" name="Changes" comment="Commit">
+      <change afterPath="$PROJECT_DIR$/br/com/codefylab/gemps/img/Vector.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style1.css" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/codefylab/gemps/style/style1.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/telalogin.html" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/codefylab/gemps/telalogin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/br/com/codefylab/gemps/teste/localizacao.js" beforeDir="false" afterPath="$PROJECT_DIR$/br/com/codefylab/gemps/teste/localizacao.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +72,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\gsf34\WebstormProjects\Gemps\br\com\codefylab\gemps\img" />
       <recent name="C:\Users\gsf34\WebstormProjects\Gemps\br\com\codefylab\gemps\style" />
       <recent name="C:\Users\gsf34\WebstormProjects\Gemps\br\com\codefylab\gemps" />
     </key>
@@ -113,6 +114,7 @@
       <workItem from="1743090611432" duration="78000" />
       <workItem from="1743118015809" duration="1651000" />
       <workItem from="1743433307781" duration="2109000" />
+      <workItem from="1743904984287" duration="4606000" />
     </task>
     <task id="LOCAL-00001" summary="Criação GemPS">
       <option name="closed" value="true" />
@@ -194,7 +196,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743434784369</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Commit">
+      <option name="closed" value="true" />
+      <created>1743905249761</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1743905249761</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -231,8 +241,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Criação GemPS" />
     <MESSAGE value="Testando rotas personalizadas" />
-    <MESSAGE value="Commit" />
     <MESSAGE value="Customização da tela inicial - Mapa" />
-    <option name="LAST_COMMIT_MESSAGE" value="Customização da tela inicial - Mapa" />
+    <MESSAGE value="Commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit" />
   </component>
 </project>

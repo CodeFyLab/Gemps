@@ -83,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
             alert('Sala não encontrada!'); // Exibe um alerta se a sala não for encontrada
         }
     }
-    fetch('https://raw.githubusercontent.com/CodeFyLab/Gemps/refs/heads/master/br/com/codefylab/gemps/teste/GemPS.geojson')
+    fetch('https://raw.githubusercontent.com/CodeFyLab/Gemps/refs/heads/master/br/com/codefylab/gemps/teste/GEMPS.geojson')
         .then(response => {
             if (!response.ok) {
                 throw new Error("Erro ao carregar o GeoJSON");
@@ -92,19 +92,46 @@ document.addEventListener('DOMContentLoaded', function () {
         })
         .then(data => {
             L.geoJSON(data, {
+                // Estilização das features (linhas/polígonos)
                 style: function (feature) {
-
                     return { color: "#ff7800", weight: 2 };
                 },
+
+                // Personalização dos marcadores (pontos)
+                pointToLayer: function (feature, latlng) {
+                    return L.marker(latlng, {
+                        icon: L.icon({
+                            iconUrl: 'img/Vector.svg' ,
+                            iconSize: [20, 30]
+                        })
+                    });
+                },
+
+                // Pop-ups e interatividade
                 onEachFeature: function (feature, layer) {
-                    if (feature.properties && feature.properties.nome) {
-                        layer.bindPopup("<strong>Nome:</strong> " + feature.properties.nome);
+                    if (feature.properties && feature.properties.Name) {
+                        layer.bindPopup(feature.properties.Name);
                     }
                 }
             }).addTo(map);
         })
         .catch(error => console.error('Erro ao carregar o GeoJSON:', error));
-
+    fetch() // Substitua pelo caminho do seu arquivo de rotas
+        .then(response => response.json())
+        .then(dataRotas => {
+            L.geoJSON(dataRotas, {
+                style: (feature) => ({
+                    color: feature.properties.cor || "#0078ff",
+                    weight: 4,
+                    opacity: 0.7
+                }),
+                onEachFeature: (feature, layer) => {
+                    if (feature.properties.nome) {
+                        layer.bindPopup(`<b>${feature.properties.nome}</b>`);
+                    }
+                }
+            }).addTo(map);
+        });
     // Adiciona um evento de input ao campo de busca
     document.getElementById('searchInput').addEventListener('input', buscarSala);
 
