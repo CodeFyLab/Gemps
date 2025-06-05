@@ -1,0 +1,465 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    background-color: #f8f9fa;
+}
+
+header {
+    position: relative;
+    background-color: transparent;
+    box-shadow: none;
+    padding: 10px 20px;
+    z-index: 1000;
+    height: 80px;
+}
+
+.search-bar {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20px;
+    width: 500px;
+    max-width: 90%;
+    z-index: 1001;
+    transition: all 0.3s ease;
+}
+
+.search-container {
+    position: relative;
+    width: 100%;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 45px 12px 20px;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    font-size: 16px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    background-color: white;
+}
+
+.search-bar input:focus {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.search-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #555;
+    pointer-events: none;
+    z-index: 2;
+    font-size: 18px;
+}
+
+.suggestions-container {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: 0 0 24px 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 1000;
+    display: none;
+    margin-top: -10px;
+    padding-top: 10px;
+    border-top: 1px solid #f1f1f1;
+}
+
+.suggestions-container.active {
+    display: block;
+}
+
+.suggestion-item {
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.suggestion-item:hover {
+    background-color: #f8f9fa;
+}
+
+.suggestion-text {
+    flex-grow: 1;
+}
+
+#searchFeedback {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 25px 25px;
+    font-size: 14px;
+    text-align: center;
+    z-index: 1000;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.feedback-hidden {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+}
+
+.feedback-error {
+    background-color: #ffebee;
+    color: #c62828;
+    border: 1px solid #ffcdd2;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.feedback-icon {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.has-suggestions .search-bar input {
+    border-radius: 24px 24px 0 0;
+}
+
+.has-suggestions .suggestions-container {
+    border-radius: 0 0 24px 24px;
+}
+
+.logo {
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    z-index: 1002;
+}
+
+.logo img {
+    height: 80px;
+    transition: all 0.3s ease;
+}
+
+#mapid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.compass-marker {
+    transition: transform 0.3s ease-out;
+}
+
+.compass-marker .arrow {
+    display: inline-block;
+}
+
+.geolocation-control {
+    position: absolute;
+    top: 90px;
+    right: 10px;
+    z-index: 1000;
+    background: white;
+    border-radius: 4px;
+    padding: 5px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+}
+
+.geolocation-control button {
+    border: none;
+    background: none;
+    font-size: 18px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+}
+
+/* Media Queries para Responsividade */
+@media (max-width: 768px) {
+    .search-bar {
+        width: 320px;
+        top: 15px;
+    }
+
+    .logo img {
+        height: 60px;
+    }
+
+    .geolocation-control {
+        top: 85px;
+    }
+
+    .search-bar input {
+        padding: 10px 35px 10px 15px;
+        font-size: 14px;
+    }
+
+    .search-icon {
+        right: 12px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        height: 70px;
+    }
+
+    .search-bar {
+        width: 280px;
+        top: 10px;
+    }
+
+    .logo {
+        right: 10px;
+        top: 15px;
+    }
+
+    .logo img {
+        height: 40px;
+    }
+
+    .geolocation-control {
+        top: 70px;
+        right: 8px;
+    }
+
+    .suggestion-item {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    .search-bar {
+        width: 230px;
+    }
+
+    .logo {
+        right: 5px;
+    }
+
+    .logo img {
+        height: 35px;
+    }
+}
+
+/* Menu Mobile */
+.mobile-menu-btn {
+    display: none;
+    position: absolute;
+    left: 15px;
+    top: 20px;
+    z-index: 1003;
+    background: white;
+    border: none;
+    border-radius: 4px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.3);
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
+.screen-size-indicator {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    z-index: 1000;
+}
+
+/* Estilos para rotação do mapa */
+.leaflet-control-rotation {
+    background: white;
+    border-radius: 4px;
+    padding: 8px 12px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.rotation-slider {
+    width: 100px;
+    margin: 0 5px;
+}
+
+.rotation-value {
+    min-width: 30px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.rotation-reset {
+    background: #3388ff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 1;
+}
+
+@media (max-width: 480px) {
+    .leaflet-control-rotation {
+        padding: 5px 8px;
+    }
+
+    .rotation-slider {
+        width: 70px;
+    }
+}
+
+/* Estilos para marcadores personalizados */
+.custom-marker {
+    position: relative;
+}
+
+.marker-pin {
+    width: 30px;
+    height: 30px;
+    background: #3388ff;
+    border-radius: 50% 50% 50% 0;
+    position: absolute;
+    transform: rotate(-45deg);
+    left: 0;
+    top: 0;
+    margin: -15px 0 0 -15px;
+}
+
+.marker-label {
+    position: absolute;
+    background: white;
+    border-radius: 10px;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    white-space: nowrap;
+    top: -35px;
+    left: -50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transform: translateX(-50%);
+}
+
+.popup-content {
+    min-width: 200px;
+}
+
+.popup-content h3 {
+    margin: 0 0 8px 0;
+    color: #2c3e50;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+}
+
+.popup-coords {
+    font-size: 11px;
+    color: #7f8c8d;
+    margin-top: 5px;
+}
+
+/* Estilos para geolocalização */
+.geo-control {
+    background: white;
+    border-radius: 4px;
+    padding: 5px 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.geo-btn {
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: none;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
+
+.geo-btn.active {
+    color: #3388ff;
+    transform: scale(1.1);
+}
+
+.geo-status {
+    font-size: 9px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+.compass-marker {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.compass-outer {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #3388ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+.compass-inner {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: white;
+    position: relative;
+}
+
+.compass-arrow {
+    position: absolute;
+    top: 2px;
+    left: 13px;
+    width: 4px;
+    height: 12px;
+    background: #e74c3c;
+    border-radius: 2px;
+    transform-origin: center 13px;
+    transition: transform 0.3s ease;
+}
